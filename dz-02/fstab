@@ -1,0 +1,16 @@
+
+#
+# /etc/fstab
+# Created by anaconda on Tue Apr  3 21:42:15 2018
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/VolGroup00-LogVol00 /                       xfs     defaults        0 0
+UUID=a9953552-87ca-4e1c-972e-fb484ce749fe /boot                   xfs     defaults        0 0
+/dev/mapper/VolGroup00-LogVol01 swap                    swap    defaults        0 0
+UUID=96dd24cc-8000-40b7-b80d-6c64c15f518a /mnt/disk1	ext3	defaults	1 2
+UUID=ce393354-29ea-4ba7-ba07-cc942311e430 /mnt/disk2	ext3	defaults	1 2
+UUID=a3e1ab34-52ba-4e85-9348-27531d5483b8 /mnt/disk3	ext3	defaults	1 2
+UUID=fd48c2d1-f8b2-4b9c-a096-06b2d8792e36 /mnt/disk4	ext3	defaults	1 2
+UUID=18c26895-bd7c-4075-b937-ae09a1b11600 /mnt/disk5	ext3	defaults	1 2
