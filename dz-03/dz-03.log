@@ -1,0 +1,511 @@
+Script started on 2018-05-21 03:20:26-04:00
+[root@localhost-live ~]# vgscan
+  Reading volume groups from cache.
+  Found volume group "VolGroup00" using metadata type lvm2
+[root@localhost-live ~]# vgchange -ay
+  2 logical volume(s) in volume group "VolGroup00" now active
+[root@localhost-live ~]# ls /mnt
+[root@localhost-live ~]# mkdit /mnt/otus/[K-linux
+bash: mkdit: command not found...
+[root@localhost-live ~]# mkdit /mnt/otus-linux[C[1P /mnt/otus-linuxr /mnt/otus-linux
+[root@localhost-live ~]# ls /mnt
+[0m[01;34motus-linux[0m
+[root@localhost-live ~]# mount /dev/VolGroup00/LogVol00 /mnt/otud[Ks-linux/
+[root@localhost-live ~]# ls [K[K[Kmount /dev/de[K[Ksde2 /mnt/oti[Kus-linux/boot
+[root@localhost-live ~]# cd /mnt/otus-linux/
+[root@localhost-live otus-linux]# ls
+[0m[01;36mbin[0m   [01;34mdev[0m  [01;34mhome[0m  [01;36mlib64[0m  [01;34mmnt[0m  [01;34mproc[0m  [01;34mrun[0m   [01;34msrv[0m  [30;42mtmp[0m  [01;34mvagrant[0m
+[01;34mboot[0m  [01;34metc[0m  [01;36mlib[0m   [01;34mmedia[0m  [01;34mopt[0m  [01;34mroot[0m  [01;36msbin[0m  [01;34msys[0m  [01;34musr[0m  [01;34mvar[0m
+[root@localhost-live otus-linux]# df -h
+Filesystem                       Size  Used Avail Use% Mounted on
+devtmpfs                         466M     0  466M   0% /dev
+tmpfs                            493M  4.0K  493M   1% /dev/shm
+tmpfs                            493M  1.4M  492M   1% /run
+tmpfs                            493M     0  493M   0% /sys/fs/cgroup
+/dev/sr0                         1.7G  1.7G     0 100% /run/initramfs/live
+/dev/mapper/live-rw              6.4G  4.9G  1.5G  77% /
+tmpfs                            493M   72K  493M   1% /tmp
+vartmp                           493M     0  493M   0% /var/tmp
+tmpfs                             99M  2.4M   97M   3% /run/user/1000
+tmpfs                             99M  4.0K   99M   1% /run/user/0
+/dev/mapper/VolGroup00-LogVol00   38G  2.2G   36G   6% /mnt/otus-linux
+/dev/sde2                       1014M   86M  929M   9% /mnt/otus-linux/boot
+[root@localhost-live otus-linux]# ls [K[K[Kcd [K[K[Krm vagrant/*[C[C[C-vagrant/*fvagrant/* vagrant/*
+[root@localhost-live otus-linux]# df -h
+Filesystem                       Size  Used Avail Use% Mounted on
+devtmpfs                         466M     0  466M   0% /dev
+tmpfs                            493M  4.0K  493M   1% /dev/shm
+tmpfs                            493M  1.4M  492M   1% /run
+tmpfs                            493M     0  493M   0% /sys/fs/cgroup
+/dev/sr0                         1.7G  1.7G     0 100% /run/initramfs/live
+/dev/mapper/live-rw              6.4G  4.9G  1.5G  77% /
+tmpfs                            493M   72K  493M   1% /tmp
+vartmp                           493M     0  493M   0% /var/tmp
+tmpfs                             99M  2.4M   97M   3% /run/user/1000
+tmpfs                             99M  4.0K   99M   1% /run/user/0
+/dev/mapper/VolGroup00-LogVol00   38G  1.2G   37G   4% /mnt/otus-linux
+/dev/sde2                       1014M   86M  929M   9% /mnt/otus-linux/boot
+[root@localhost-live otus-linux]# ls[K[Kud
+udevadm    udisksctl  
+[root@localhost-live otus-linux]# ud[K[Ku
+ucs2any                    unix_chkpwd                update-pciids
+udevadm                    unix_update                upower
+udisksctl                  unlink                     uptime
+ul                         unlz4                      usb-devices
+ulimit                     unoconv                    usbhid-dump
+ulockmgr_server            unopkg                     usb_modeswitch
+umask                      unpack200                  usb_modeswitch_dispatcher
+umax_pp                    unpigz                     usbmuxd
+umount                     unset                      useradd
+umount.nfs                 unshare                    userdel
+umount.nfs4                until                      userhelper
+umount.udisks2             unxz                       usermod
+unalias                    unzip                      usernetctl
+uname                      unzipsfx                   users
+uname26                    update-alternatives        usleep
+unexpand                   update-ca-trust            utmpdump
+unicode_start              update-crypto-policies     uuidgen
+unicode_stop               updatedb                   uuidparse
+uniq                       update-desktop-database    uz
+unix2dos                   update-gtk-immodules       
+unix2mac                   update-mime-database       
+[root@localhost-live otus-linux]# u[Kdu -sh /
+du: cannot access '/run/user/1000/gvfs': Permission denied
+^C
+[root@localhost-live otus-linux]# du -sh /[C[K.
+1.2G	.
+[root@localhost-live otus-linux]# tar -s[Kseli[K[K[K[K0[K-ta[K[Kselinux --xattrs -czpf ./otusl/[K[K-linux.tar.gz .
+tar: ./var/lib/gssproxy/default.sock: socket ignored
+tar: ./var/spool/postfix/private/tlsmgr: socket ignored
+tar: ./var/spool/postfix/private/rewrite: socket ignored
+tar: ./var/spool/postfix/private/bounce: socket ignored
+tar: ./var/spool/postfix/private/defer: socket ignored
+tar: ./var/spool/postfix/private/trace: socket ignored
+tar: ./var/spool/postfix/private/verify: socket ignored
+tar: ./var/spool/postfix/private/proxymap: socket ignored
+tar: ./var/spool/postfix/private/proxywrite: socket ignored
+tar: ./var/spool/postfix/private/smtp: socket ignored
+tar: ./var/spool/postfix/private/relay: socket ignored
+tar: ./var/spool/postfix/private/error: socket ignored
+tar: ./var/spool/postfix/private/retry: socket ignored
+tar: ./var/spool/postfix/private/discard: socket ignored
+tar: ./var/spool/postfix/private/local: socket ignored
+tar: ./var/spool/postfix/private/virtual: socket ignored
+tar: ./var/spool/postfix/private/lmtp: socket ignored
+tar: ./var/spool/postfix/private/anvil: socket ignored
+tar: ./var/spool/postfix/private/scache: socket ignored
+tar: ./var/spool/postfix/public/pickup: socket ignored
+tar: ./var/spool/postfix/public/cleanup: socket ignored
+tar: ./var/spool/postfix/public/qmgr: socket ignored
+tar: ./var/spool/postfix/public/flush: socket ignored
+tar: ./var/spool/postfix/public/showq: socket ignored
+tar: .: file changed as we read it
+[root@localhost-live otus-linux]# ls[K[Kls -sh
+total 496M
+   0 [0m[01;36mbin[0m    12K [01;34metc[0m      0 [01;36mlib64[0m     0 [01;34mopt[0m                   0 [01;34mroot[0m     0 [01;34msrv[0m     0 [01;34musr[0m
+4.0K [01;34mboot[0m     0 [01;34mhome[0m     0 [01;34mmedia[0m  496M [01;31motus-linux.tar.gz[0m     0 [01;34mrun[0m      0 [01;34msys[0m     0 [01;34mvagrant[0m
+   0 [01;34mdev[0m      0 [01;36mlib[0m      0 [01;34mmnt[0m       0 [01;34mproc[0m                  0 [01;36msbin[0m     0 [30;42mtmp[0m     0 [01;34mvar[0m
+[root@localhost-live otus-linux]# cp ut[K[Kotus-linux.tar.gz /d[Kroot/
+[root@localhost-live otus-linux]# ls /[K-sh1 /root
+total 496M
+ 16K anaconda-ks.cfg
+4.0K dz-03.log
+496M [0m[01;31motus-linux.tar.gz[0m
+[root@localhost-live otus-linux]# cd ..
+[root@localhost-live mnt]# umount /mnt/otus-linux/{boot, .}
+umount: /mnt/otus-linux/{boot,: no mount point specified.
+umount: .}: no mount point specified.
+[root@localhost-live mnt]# umount /mnt/otus-linux/{boot, .} }
+umount: /mnt/otus-linux/{boot,: no mount point specified.
+umount: .: not mounted.
+umount: }: no mount point specified.
+[root@localhost-live mnt]# umount /mnt/otus-linux/{boot, . }[C[K[K[K[K[K[K[K[K[K[Kboot
+[root@localhost-live mnt]# umount /mnt/otus-linux/boot[K[K[K[K[K
+[root@localhost-live mnt]# s[Kdf -h
+Filesystem           Size  Used Avail Use% Mounted on
+devtmpfs             466M     0  466M   0% /dev
+tmpfs                493M  4.0K  493M   1% /dev/shm
+tmpfs                493M  1.4M  492M   1% /run
+tmpfs                493M     0  493M   0% /sys/fs/cgroup
+/dev/sr0             1.7G  1.7G     0 100% /run/initramfs/live
+/dev/mapper/live-rw  6.4G  5.4G 1016M  85% /
+tmpfs                493M   72K  493M   1% /tmp
+vartmp               493M     0  493M   0% /var/tmp
+tmpfs                 99M  2.4M   97M   3% /run/user/1000
+tmpfs                 99M  4.0K   99M   1% /run/user/0
+[root@localhost-live mnt]# lvs
+  LV       VG         Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  LogVol00 VolGroup00 -wi-a----- <37.47g                                                    
+  LogVol01 VolGroup00 -wi-ao----   1.50g                                                    
+[root@localhost-live mnt]# lvremove /dev/VolGroup00/LogVol00
+Do you really want to remove active logical volume VolGroup00/LogVol00? [y/n]: y
+  Logical volume "LogVol00" successfully removed
+[root@localhost-live mnt]# lvcreate -L 8G -n LogVol00 VolGroup00 
+WARNING: xfs signature detected on /dev/VolGroup00/LogVol00 at offset 0. Wipe it? [y/n]: y
+  Wiping xfs signature on /dev/VolGroup00/LogVol00.
+  Logical volume "LogVol00" created.
+[root@localhost-live mnt]# mkfs.xfs -f /dev/mapper/VolGroup00-LogVol00
+meta-data=/dev/mapper/VolGroup00-LogVol00 isize=512    agcount=4, agsize=524288 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=0, rmapbt=0, reflink=0
+data     =                       bsize=4096   blocks=2097152, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+[root@localhost-live mnt]# mount /dev/mapper/VolGroup00-LogVol00 /mnt/otus-linux/
+[root@localhost-live mnt]# ls[K[Kcd otus-linux/
+[root@localhost-live otus-linux]# ls
+[root@localhost-live otus-linux]# mkdir [K[K[K[K[K[Klvs
+  LV       VG         Attr       LSize Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  LogVol00 VolGroup00 -wi-ao---- 8.00g                                                    
+  LogVol01 VolGroup00 -wi-ao---- 1.50g                                                    
+[root@localhost-live otus-linux]# df -h
+Filesystem                       Size  Used Avail Use% Mounted on
+devtmpfs                         466M     0  466M   0% /dev
+tmpfs                            493M  4.0K  493M   1% /dev/shm
+tmpfs                            493M  1.4M  492M   1% /run
+tmpfs                            493M     0  493M   0% /sys/fs/cgroup
+/dev/sr0                         1.7G  1.7G     0 100% /run/initramfs/live
+/dev/mapper/live-rw              6.4G  5.4G 1016M  85% /
+tmpfs                            493M   72K  493M   1% /tmp
+vartmp                           493M     0  493M   0% /var/tmp
+tmpfs                             99M  2.4M   97M   3% /run/user/1000
+tmpfs                             99M  4.0K   99M   1% /run/user/0
+/dev/mapper/VolGroup00-LogVol00  8.0G   41M  8.0G   1% /mnt/otus-linux
+[root@localhost-live otus-linux]# ls -a
+[0m[01;34m.[0m  [01;34m..[0m
+[root@localhost-live otus-linux]# mkdir boot
+[root@localhost-live otus-linux]# mkdir home
+[root@localhost-live otus-linux]# mkdir var
+[root@localhost-live otus-linux]# lsbLK[K[Klk
+NAME                    MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
+loop0                     7:0    0  1.6G  1 loop  
+loop1                     7:1    0  6.5G  1 loop  
+├─live-rw               253:0    0  6.5G  0 dm    /
+└─live-base             253:1    0  6.5G  1 dm    
+loop2                     7:2    0   32G  0 loop  
+└─live-rw               253:0    0  6.5G  0 dm    /
+sda                       8:0    0  250M  0 disk  
+└─md127                   9:127  0  250M  0 raid1 
+  └─md125                 9:125  0  499M  0 raid0 
+    ├─md125p1           259:0    0  100M  0 md    
+    ├─md125p2           259:1    0  100M  0 md    
+    ├─md125p3           259:2    0  100M  0 md    
+    ├─md125p4           259:3    0  100M  0 md    
+    └─md125p5           259:4    0   98M  0 md    
+sdb                       8:16   0  250M  0 disk  
+└─md127                   9:127  0  250M  0 raid1 
+  └─md125                 9:125  0  499M  0 raid0 
+    ├─md125p1           259:0    0  100M  0 md    
+    ├─md125p2           259:1    0  100M  0 md    
+    ├─md125p3           259:2    0  100M  0 md    
+    ├─md125p4           259:3    0  100M  0 md    
+    └─md125p5           259:4    0   98M  0 md    
+sdc                       8:32   0  250M  0 disk  
+└─md126                   9:126  0  250M  0 raid1 
+  └─md125                 9:125  0  499M  0 raid0 
+    ├─md125p1           259:0    0  100M  0 md    
+    ├─md125p2           259:1    0  100M  0 md    
+    ├─md125p3           259:2    0  100M  0 md    
+    ├─md125p4           259:3    0  100M  0 md    
+    └─md125p5           259:4    0   98M  0 md    
+sdd                       8:48   0  250M  0 disk  
+└─md126                   9:126  0  250M  0 raid1 
+  └─md125                 9:125  0  499M  0 raid0 
+    ├─md125p1           259:0    0  100M  0 md    
+    ├─md125p2           259:1    0  100M  0 md    
+    ├─md125p3           259:2    0  100M  0 md    
+    ├─md125p4           259:3    0  100M  0 md    
+    └─md125p5           259:4    0   98M  0 md    
+sde                       8:64   0   40G  0 disk  
+├─sde1                    8:65   0    1M  0 part  
+├─sde2                    8:66   0    1G  0 part  
+└─sde3                    8:67   0   39G  0 part  
+  ├─VolGroup00-LogVol00 253:2    0    8G  0 lvm   /mnt/otus-linux
+  └─VolGroup00-LogVol01 253:3    0  1.5G  0 lvm   [SWAP]
+sr0                      11:0    1  1.7G  0 rom   /run/initramfs/live
+[root@localhost-live otus-linux]# fdisk /dev/md125
+[32m
+Welcome to fdisk (util-linux 2.32).
+[0mChanges will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+
+Command (m for help): p
+[1mDisk /dev/md125: 499 MiB, 523239424 bytes, 1021952 sectors
+[0mUnits: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 524288 bytes / 1048576 bytes
+Disklabel type: gpt
+Disk identifier: 9CCB509D-C3ED-4D2D-8DB2-2AAF7BB599C7
+
+[1mDevice[0m       [1m Start[0m [1m    End[0m [1mSectors[0m [1m Size[0m [1mType[0m
+/dev/md125p1   2048  206847  204800  100M Linux filesystem
+/dev/md125p2 206848  411647  204800  100M Linux filesystem
+/dev/md125p3 411648  616447  204800  100M Linux filesystem
+/dev/md125p4 616448  821247  204800  100M Linux filesystem
+/dev/md125p5 821248 1021918  200671   98M Linux filesystem
+
+Command (m for help): m
+
+Help:
+[1m
+  GPT
+[0m   M   enter protective/hybrid MBR
+[1m
+  Generic
+[0m   d   delete a partition
+   F   list free unpartitioned space
+   l   list known partition types
+   n   add a new partition
+   p   print the partition table
+   t   change a partition type
+   v   verify the partition table
+   i   print information about a partition
+[1m
+  Misc
+[0m   m   print this menu
+   x   extra functionality (experts only)
+[1m
+  Script
+[0m   I   load disk layout from sfdisk script file
+   O   dump disk layout to sfdisk script file
+[1m
+  Save & Exit
+[0m   w   write table to disk and exit
+   q   quit without saving changes
+[1m
+  Create a new label
+[0m   g   create a new empty GPT partition table
+   G   create a new empty SGI (IRIX) partition table
+   o   create a new empty DOS partition table
+   s   create a new empty Sun partition table
+
+
+Command (m for help): d
+Partition number (1-5, default 5): 
+
+Partition 5 has been deleted.
+
+Command (m for help): d
+Partition number (1-4, default 4): 
+
+Partition 4 has been deleted.
+
+Command (m for help): d
+Partition number (1-3, default 3): 
+
+Partition 3 has been deleted.
+
+Command (m for help): d
+Partition number (1,2, default 2): 
+
+Partition 2 has been deleted.
+
+Command (m for help): d
+Selected partition 1
+Partition 1 has been deleted.
+
+Command (m for help): 
+[31m[0m
+
+Command (m for help): d
+[31mNo partition is defined yet![0m
+[31mCould not delete partition 1[0m
+
+Command (m for help): p
+[1m
+Disk /dev/md125: 499 MiB, 523239424 bytes, 1021952 sectors
+[0mUnits: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 524288 bytes / 1048576 bytes
+Disklabel type: gpt
+Disk identifier: 9CCB509D-C3ED-4D2D-8DB2-2AAF7BB599C7
+
+Command (m for help): w
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+
+[root@localhost-live otus-linux]# pv [Kctr[K[Kreate /dev/md125 
+  Device /dev/md125 excluded by a filter.
+[root@localhost-live otus-linux]# vgextend VolGroup00 /dev/sde3 [K[K[K[K[Kmd125
+  Device /dev/md125 excluded by a filter.
+[root@localhost-live otus-linux]# pvs
+  PV         VG         Fmt  Attr PSize   PFree  
+  /dev/sde3  VolGroup00 lvm2 a--  <38.97g <29.47g
+[root@localhost-live otus-linux]# dd if [K/dev/zero [C[C[1@=[C[C[C[C[C[C[C[C[C[Cof=/dev/md125 bs=1K count=1
+1+0 records in
+1+0 records out
+1024 bytes (1.0 kB, 1.0 KiB) copied, 0.0773671 s, 13.2 kB/s
+[root@localhost-live otus-linux]# blco[K[Kockdev --rereadpt /dev/md125
+[root@localhost-live otus-linux]# blockdev --rereadpt /dev/md125dd if=/dev/zero of=/dev/md125 bs=1K count=1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpvs[Kvgextend VolGroup00 /dev/md125[10Ppvcreate /dev/md125 
+  Physical volume "/dev/md125" successfully created.
+[root@localhost-live otus-linux]# pvcreate /dev/md125 blockdev --rereadpt /dev/md125dd if=/dev/zero of=/dev/md125 bs=1K count=1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpvs[Kvgextend VolGroup00 /dev/md125
+  Volume group "VolGroup00" successfully extended
+[root@localhost-live otus-linux]# pvs
+  PV         VG         Fmt  Attr PSize   PFree  
+  /dev/md125 VolGroup00 lvm2 a--  480.00m 480.00m
+  /dev/sde3  VolGroup00 lvm2 a--  <38.97g <29.47g
+[root@localhost-live otus-linux]# v[Klsblk
+NAME                    MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
+loop0                     7:0    0  1.6G  1 loop  
+loop1                     7:1    0  6.5G  1 loop  
+├─live-rw               253:0    0  6.5G  0 dm    /
+└─live-base             253:1    0  6.5G  1 dm    
+loop2                     7:2    0   32G  0 loop  
+└─live-rw               253:0    0  6.5G  0 dm    /
+sda                       8:0    0  250M  0 disk  
+└─md127                   9:127  0  250M  0 raid1 
+  └─md125                 9:125  0  499M  0 raid0 
+sdb                       8:16   0  250M  0 disk  
+└─md127                   9:127  0  250M  0 raid1 
+  └─md125                 9:125  0  499M  0 raid0 
+sdc                       8:32   0  250M  0 disk  
+└─md126                   9:126  0  250M  0 raid1 
+  └─md125                 9:125  0  499M  0 raid0 
+sdd                       8:48   0  250M  0 disk  
+└─md126                   9:126  0  250M  0 raid1 
+  └─md125                 9:125  0  499M  0 raid0 
+sde                       8:64   0   40G  0 disk  
+├─sde1                    8:65   0    1M  0 part  
+├─sde2                    8:66   0    1G  0 part  
+└─sde3                    8:67   0   39G  0 part  
+  ├─VolGroup00-LogVol00 253:2    0    8G  0 lvm   /mnt/otus-linux
+  └─VolGroup00-LogVol01 253:3    0  1.5G  0 lvm   [SWAP]
+sr0                      11:0    1  1.7G  0 rom   /run/initramfs/live
+[root@localhost-live otus-linux]# vgs
+  VG         #PV #LV #SN Attr   VSize   VFree  
+  VolGroup00   2   2   0 wz--n- <39.44g <29.94g
+[root@localhost-live otus-linux]# lvcreate -L400M -m1 -n var VolGroup00 
+  Rounding up size to full physical extent 416.00 MiB
+  Logical volume "var" created.
+[root@localhost-live otus-linux]# lvs
+  LV       VG         Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  LogVol00 VolGroup00 -wi-ao----   8.00g                                                    
+  LogVol01 VolGroup00 -wi-ao----   1.50g                                                    
+  var      VolGroup00 rwi-a-r--- 416.00m                                    41.54           
+[root@localhost-live otus-linux]# lvcreate -l[KL 2GX[K -n home VolGroup00 /dev/^[[2~^?[K[K[K[K[K[K[K[K[K[K[K
+  Logical volume "home" created.
+[root@localhost-live otus-linux]# lvs
+  LV       VG         Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  LogVol00 VolGroup00 -wi-ao----   8.00g                                                    
+  LogVol01 VolGroup00 -wi-ao----   1.50g                                                    
+  home     VolGroup00 -wi-a-----   2.00g                                                    
+  var      VolGroup00 rwi-a-r--- 416.00m                                    100.00          
+[root@localhost-live otus-linux]# mkfs.xfs [K[K[K[Ketx3 /dev/mapper/VolGroup00-home
+bash: mkfs.etx3: command not found...
+Similar command is: 'mkfs.ext3'
+[root@localhost-live otus-linux]# mkf
+mkfifo        mkfs          mkfs.ext2     mkfs.fat      mkfs.msdos    mkfs.xfs      
+mkfontdir     mkfs.btrfs    mkfs.ext3     mkfs.hfsplus  mkfs.ntfs     
+mkfontscale   mkfs.cramfs   mkfs.ext4     mkfs.minix    mkfs.vfat     
+[root@localhost-live otus-linux]# mkfsext3[K[K[K[K[Ks.ext3 /dev/mapper/VolGroup00-homee[K
+mke2fs 1.43.8 (1-Jan-2018)
+Creating filesystem with 524288 4k blocks and 131072 inodes
+Filesystem UUID: ced3e7df-f719-4f0f-8f4c-eb2151b140e9
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912
+
+Allocating group tables:  0/16     done                            
+Writing inode tables:  0/16     done                            
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information:  0/16     done
+
+[root@localhost-live otus-linux]# mkfs.sfx[K[K[Kxfs -f /dev/mapper/VolGroup00-var
+meta-data=/dev/mapper/VolGroup00-var isize=512    agcount=4, agsize=26624 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=0, rmapbt=0, reflink=0
+data     =                       bsize=4096   blocks=106496, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=855, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+[root@localhost-live otus-linux]# mount /dev/sde2 /mnt/otus-linux/boot
+[root@localhost-live otus-linux]# mount /dev/mapper/VolGroup00-home /mnt/ote[Kus-linux/home
+[root@localhost-live otus-linux]# ls
+[0m[01;34mboot[0m  [01;34mhome[0m  [01;34mvar[0m
+[root@localhost-live otus-linux]# mount /dev/mapper/VolGroup00-var /mnt/otus-linux/var
+[root@localhost-live otus-linux]# ls
+[0m[01;34mboot[0m  [01;34mhome[0m  [01;34mvar[0m
+[root@localhost-live otus-linux]# df -h
+Filesystem                       Size  Used Avail Use% Mounted on
+devtmpfs                         466M     0  466M   0% /dev
+tmpfs                            493M  4.0K  493M   1% /dev/shm
+tmpfs                            493M  1.4M  492M   1% /run
+tmpfs                            493M     0  493M   0% /sys/fs/cgroup
+/dev/sr0                         1.7G  1.7G     0 100% /run/initramfs/live
+/dev/mapper/live-rw              6.4G  5.4G 1016M  85% /
+tmpfs                            493M   72K  493M   1% /tmp
+vartmp                           493M     0  493M   0% /var/tmp
+tmpfs                             99M  2.4M   97M   3% /run/user/1000
+tmpfs                             99M  4.0K   99M   1% /run/user/0
+/dev/mapper/VolGroup00-LogVol00  8.0G   41M  8.0G   1% /mnt/otus-linux
+/dev/sde2                       1014M   86M  929M   9% /mnt/otus-linux/boot
+/dev/mapper/VolGroup00-home      2.0G  3.1M  1.9G   1% /mnt/otus-linux/home
+/dev/mapper/VolGroup00-var       413M   22M  392M   6% /mnt/otus-linux/var
+[root@localhost-live otus-linux]# tar --selinux --xattrs -xzpf /root/otus-linux.tar.gz -C .
+[root@localhost-live otus-linux]# ls
+[0m[01;36mbin[0m   [01;34mdev[0m  [01;34mhome[0m  [01;36mlib64[0m  [01;34mmnt[0m  [01;34mproc[0m  [01;34mrun[0m   [01;34msrv[0m  [30;42mtmp[0m  [01;34mvagrant[0m
+[01;34mboot[0m  [01;34metc[0m  [01;36mlib[0m   [01;34mmedia[0m  [01;34mopt[0m  [01;34mroot[0m  [01;36msbin[0m  [01;34msys[0m  [01;34musr[0m  [01;34mvar[0m
+[root@localhost-live otus-linux]# e[Kvi etc/fstb[Kbs[K[Ksb[K[K[Ktab
+[1;37r[27m[24m[m[H[J[?25l[?1c[37;1H"etc/fstab" 16L, 681C[2;1H#
+# /etc/fstab
+# Created by anaconda on Tue Apr  3 21:42:15 2018
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/VolGroup00-LogVol00 /[23Cxfs     defaults[8C0 0
+UUID=a9953552-87ca-4e1c-972e-fb484ce749fe /boot[19Cxfs     defaults[8C0 0
+/dev/mapper/VolGroup00-LogVol01 swap[20Cswap    defaults[8C0 0
+/dev/md2p1      /mnt/disk1      ext3    defaults[8C1 2
+/dev/md2p2      /mnt/disk2      ext3    defaults[8C1 2
+/dev/md2p3      /mnt/disk3      ext3    defaults[8C1 2
+/dev/md2p4      /mnt/disk4      ext3    defaults[8C1 2
+/dev/md2p5      /mnt/disk5      ext3    defaults[8C1 2
+[1m[34m~                                                                                                   [18;1H~                                                                                                   [19;1H~                                                                                                   [20;1H~                                                                                                   [21;1H~                                                                                                   [22;1H~                                                                                                   [23;1H~                                                                                                   [24;1H~                                                                                                   [25;1H~                                                                                                   [26;1H~                                                                                                   [27;1H~                                                                                                   [28;1H~                                                                                                   [29;1H~                                                                                                   [30;1H~                                                                                                   [31;1H~                                                                                                   [32;1H~                                                                                                   [33;1H~                                                                                                   [34;1H~                                                                                                   [35;1H~                                                                                                   [36;1H~                                                                                                   [1;1H[?25h[?0c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[15;1H[14;1H[13;1H[12;1H[?25l[?1c[12;36r[m[36;1H
+[1;37r[36;1H[1m[34m~                                                                                                   [m[37;1H[K[12;1H[?25h[?0c[?25l[?1c[12;36r[36;1H
+[1;37r[36;1H[1m[34m~                                                                                                   [12;1H[?25h[?0c[?25l[?1c[12;36r[m[36;1H
+[1;37r[36;1H[1m[34m~                                                                                                   [12;1H[?25h[?0c[?25l[?1c[12;36r[m[36;1H
+[1;37r[36;1H[1m[34m~                                                                                                   [12;1H[?25h[?0c[?25l[?1c~                                                                                                   [11;1H[?25h[?0c[10;1H
+[10;1H[9;1H
+[?25l[?1c[m[37;1H[1m-- INSERT --[11;36r[m[11;1H[L[1;37r[11;1H[?25h[?0c[?25l[?1c/[?25h[?0c[?25l[?1cd[?25h[?0c[?25l[?1ce[?25h[?0c[?25l[?1cv[?25h[?0c[?25l[?1c/[?25h[?0c[?25l[?1cm[?25h[?0c[?25l[?1ca[?25h[?0c[?25l[?1cp[?25h[?0c[?25l[?1cp[?25h[?0c[?25l[?1ce[?25h[?0c[?25l[?1cr[?25h[?0c[?25l[?1c/[?25h[?0c[?25l[?1cV[?25h[?0c[?25l[?1co[?25h[?0c[?25l[?1cl[?25h[?0c[?25l[?1cG[?25h[?0c[?25l[?1cr[?25h[?0c[?25l[?1co[?25h[?0c[?25l[?1cu[?25h[?0c[?25l[?1cp[?25h[?0c[?25l[?1c0[?25h[?0c[?25l[?1c0[?25h[?0c[?25l[?1c-[?25h[?0c[?25l[?1ch[?25h[?0c[?25l[?1co[?25h[?0c[?25l[?1cm[?25h[?0c[?25l[?1ce[?25h[?0c[?25l[?1c     [?25h[?0c[?25l[?1c/[?25h[?0c[?25l[?1ch[?25h[?0c[?25l[?1co[?25h[?0c[?25l[?1cm[?25h[?0c[?25l[?1ce[?25h[?0c[?25l[?1c   [?25h[?0c[?25l[?1ce[?25h[?0c[?25l[?1cx[?25h[?0c[?25l[?1ct[?25h[?0c[?25l[?1c3[?25h[?0c[?25l[?1c    [?25h[?0c[?25l[?1cd[?25h[?0c[?25l[?1ce[?25h[?0c[?25l[?1cf[?25h[?0c[?25l[?1ca[?25h[?0c[?25l[?1cu[?25h[?0c[?25l[?1cl[?25h[?0c[?25l[?1ct[?25h[?0c[?25l[?1cs[?25h[?0c[?25l[?1c[8C[?25h[?0c[?25l[?1c0[?25h[?0c[?25l[?1c [?25h[?0c[?25l[?1c0[?25h[?0c[?25l[?1c[12;36r[12;1H[L[1;37r[12;1H[?25h[?0c[?25l[?1c/[?25h[?0c[?25l[?1cd[?25h[?0c[?25l[?1ce[?25h[?0c[?25l[?1cv[?25h[?0c[?25l[?1c/[?25h[?0c[?25l[?1cm[?25h[?0c[?25l[?1ca[?25h[?0c[?25l[?1cp[?25h[?0c[?25l[?1cp[?25h[?0c[?25l[?1ce[?25h[?0c[?25l[?1cr[?25h[?0c[?25l[?1c/[?25h[?0c[?25l[?1cV[?25h[?0c[?25l[?1co[?25h[?0c[?25l[?1cl[?25h[?0c[?25l[?1cG[?25h[?0c[?25l[?1cr[?25h[?0c[?25l[?1co[?25h[?0c[?25l[?1cu[?25h[?0c[?25l[?1cp[?25h[?0c[?25l[?1c0[?25h[?0c[?25l[?1c0[?25h[?0c[?25l[?1c-[?25h[?0c[?25l[?1cv[?25h[?0c[?25l[?1ca[?25h[?0c[?25l[?1cr[?25h[?0c[?25l[?1c      [?25h[?0c[?25l[?1c/[?25h[?0c[?25l[?1cv[?25h[?0c[?25l[?1ca[?25h[?0c[?25l[?1cr[?25h[?0c[?25l[?1c    [?25h[?0c[?25l[?1cx[?25h[?0c[?25l[?1cf[?25h[?0c[?25l[?1cs[?25h[?0c[?25l[?1c     [?25h[?0c[?25l[?1cd[?25h[?0c[?25l[?1ce[?25h[?0c[?25l[?1cf[?25h[?0c[?25l[?1ca[?25h[?0c[?25l[?1cu[?25h[?0c[?25l[?1cl[?25h[?0c[?25l[?1ct[?25h[?0c[?25l[?1cs[?25h[?0c[?25l[?1c[8C[?25h[?0c[?25l[?1c0[?25h[?0c[?25l[?1c[7C[?25h[?0c[?25l[?1c0[?25h[?0c[?25l[?1c[12;73H[K[12;73H[?25h[?0c[?25l[?1c[12;66H[?25h[?0c[?25l[?1c [?25h[?0c[?25l[?1c0[?25h[?0c[?25l[?1c[37;1H[K[12;67H[?25h[?0c[?25l[?1c[37;1H:[?25h[?0cwq[?25l[?1c"etc/fstab" 13L, 582C written[?25h[?0c
+[root@localhost-live otus-linux]# df -h
+Filesystem                       Size  Used Avail Use% Mounted on
+devtmpfs                         466M     0  466M   0% /dev
+tmpfs                            493M  4.0K  493M   1% /dev/shm
+tmpfs                            493M  1.4M  492M   1% /run
+tmpfs                            493M     0  493M   0% /sys/fs/cgroup
+/dev/sr0                         1.7G  1.7G     0 100% /run/initramfs/live
+/dev/mapper/live-rw              6.4G  5.4G 1016M  85% /
+tmpfs                            493M   72K  493M   1% /tmp
+vartmp                           493M     0  493M   0% /var/tmp
+tmpfs                             99M  2.4M   97M   3% /run/user/1000
+tmpfs                             99M  4.0K   99M   1% /run/user/0
+/dev/mapper/VolGroup00-LogVol00  8.0G  1.1G  7.0G  13% /mnt/otus-linux
+/dev/sde2                       1014M   86M  929M   9% /mnt/otus-linux/boot
+/dev/mapper/VolGroup00-home      2.0G  3.1M  1.9G   1% /mnt/otus-linux/home
+/dev/mapper/VolGroup00-var       413M  163M  251M  40% /mnt/otus-linux/var
+[root@localhost-live otus-linux]# exit
+exit
+
+Script done on 2018-05-21 03:54:54-04:00

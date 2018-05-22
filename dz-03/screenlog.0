@@ -1,0 +1,212 @@
+kroot@otuslinux:/home/vagrant/otus/dz-03\[root@otuslinux dz-03]# df-[K -h
+Filesystem                       Size  Used Avail Use% Mounted on
+/dev/mapper/VolGroup00-LogVol00  8.0G  2.1G  6.0G  26% /
+devtmpfs                         488M     0  488M   0% /dev
+tmpfs                            496M     0  496M   0% /dev/shm
+tmpfs                            496M  6.9M  490M   2% /run
+tmpfs                            496M     0  496M   0% /sys/fs/cgroup
+/dev/sda2                       1014M   86M  929M   9% /boot
+/dev/mapper/VolGroup00-home      2.0G  3.2M  1.9G   1% /home
+/dev/mapper/VolGroup00-var       413M  162M  251M  40% /var
+tmpfs                            100M     0  100M   0% /run/user/1000
+tmpfs                            100M     0  100M   0% /run/user/0
+otus                             466G  382G   85G  82% /home/vagrant/otus
+kroot@otuslinux:/home/vagrant/otus/dz-03\[root@otuslinux dz-03]# lvs
+  LV       VG         Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  LogVol00 VolGroup00 -wi-ao----   8.00g                                                    
+  LogVol01 VolGroup00 -wi-ao----   1.50g                                                    
+  home     VolGroup00 -wi-ao----   2.00g                                                    
+  var      VolGroup00 rwi-aor--- 416.00m                                    100.00          
+kroot@otuslinux:/home/vagrant/otus/dz-03\[root@otuslinux dz-03]# s[Kvgs
+  VG         #PV #LV #SN Attr   VSize   VFree 
+  VolGroup00   2   4   0 wz--n- <39.44g 27.06g
+kroot@otuslinux:/home/vagrant/otus/dz-03\[root@otuslinux dz-03]# vgdispa[Klay
+  --- Volume group ---
+  VG Name               VolGroup00
+  System ID             
+  Format                lvm2
+  Metadata Areas        2
+  Metadata Sequence No  9
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                4
+  Open LV               4
+  Max PV                0
+  Cur PV                2
+  Act PV                2
+  VG Size               <39.44 GiB
+  PE Size               32.00 MiB
+  Total PE              1262
+  Alloc PE / Size       396 / <12.38 GiB
+  Free  PE / Size       866 / 27.06 GiB
+  VG UUID               dGc57I-fYMz-Paey-V1Pw-yN1w-gPOe-9qc4FM
+   
+kroot@otuslinux:/home/vagrant/otus/dz-03\[root@otuslinux dz-03]# ls[K[Ks[Klvcreate --size 2G --snapshot --name home-sp[Knapshot /dev/VolGroup00/home
+  Logical volume "home-snapshot" created.
+kroot@otuslinux:/home/vagrant/otus/dz-03\[root@otuslinux dz-03]# lvs
+  LV            VG         Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  LogVol00      VolGroup00 -wi-ao----   8.00g                                                    
+  LogVol01      VolGroup00 -wi-ao----   1.50g                                                    
+  home          VolGroup00 owi-aos---   2.00g                                                    
+  home-snapshot VolGroup00 swi-a-s---   2.00g      home   0.01                                   
+  var           VolGroup00 rwi-aor--- 416.00m                                    100.00          
+kroot@otuslinux:/home/vagrant/otus/dz-03\[root@otuslinux dz-03]# lvdisplay home[K[K[K[K/dev/[K[K[K[K[K[K
+  --- Logical volume ---
+  LV Path                /dev/VolGroup00/LogVol01
+  LV Name                LogVol01
+  VG Name                VolGroup00
+  LV UUID                89624j-KIdt-YZqE-jERC-KEiB-Aycr-8FYeB3
+  LV Write Access        read/write
+  LV Creation host, time localhost.localdomain, 2018-04-03 21:42:14 +0000
+  LV Status              available
+  # open                 2
+  LV Size                1.50 GiB
+  Current LE             48
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:1
+   
+  --- Logical volume ---
+  LV Path                /dev/VolGroup00/LogVol00
+  LV Name                LogVol00
+  VG Name                VolGroup00
+  LV UUID                9qb5O2-dKQZ-YhfX-FPDh-gkqA-vW7X-0eMAF6
+  LV Write Access        read/write
+  LV Creation host, time localhost-live, 2018-05-21 07:34:18 +0000
+  LV Status              available
+  # open                 1
+  LV Size                8.00 GiB
+  Current LE             256
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:0
+   
+  --- Logical volume ---
+  LV Path                /dev/VolGroup00/var
+  LV Name                var
+  VG Name                VolGroup00
+  LV UUID                6elgso-lsOQ-lwbr-ThUS-CjQy-ArYH-475Kpc
+  LV Write Access        read/write
+  LV Creation host, time localhost-live, 2018-05-21 07:44:17 +0000
+  LV Status              available
+  # open                 1
+  LV Size                416.00 MiB
+  Current LE             13
+  Mirrored volumes       2
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:6
+   
+  --- Logical volume ---
+  LV Path                /dev/VolGroup00/home
+  LV Name                home
+  VG Name                VolGroup00
+  LV UUID                UDnDsC-wN0P-Iv1r-F8s5-urDX-K7LY-8Nunnn
+  LV Write Access        read/write
+  LV Creation host, time localhost-live, 2018-05-21 07:45:32 +0000
+  LV snapshot status     source of
+                         home-snapshot [active]
+  LV Status              available
+  # open                 1
+  LV Size                2.00 GiB
+  Current LE             64
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:7
+   
+  --- Logical volume ---
+  LV Path                /dev/VolGroup00/home-snapshot
+  LV Name                home-snapshot
+  VG Name                VolGroup00
+  LV UUID                V5GZXX-7CYL-NZNL-Iwqc-AE3r-ErVt-0AbC0o
+  LV Write Access        read/write
+  LV Creation host, time otuslinux, 2018-05-21 08:07:52 +0000
+  LV snapshot status     active destination for home
+  LV Status              available
+  # open                 0
+  LV Size                2.00 GiB
+  Current LE             64
+  COW-table size         2.00 GiB
+  COW-table LE           64
+  Allocated to snapshot  0.01%
+  Snapshot chunk size    4.00 KiB
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:10
+   
+kroot@otuslinux:/home/vagrant/otus/dz-03\[root@otuslinux dz-03]# св .рщьу [K[K[K[K[K[K[K[K[Kcd /home [K/vagrant/
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# pwd
+/home/vagrant
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# umount tus
+umount: tus: mountpoint not found
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# umount tus[K[K[Kotus/
+umount: /home/vagrant/otus: target is busy.
+        (In some cases useful info about processes that use
+         the device is found by lsof(8) or fuser(1))
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# df -h
+Filesystem                       Size  Used Avail Use% Mounted on
+/dev/mapper/VolGroup00-LogVol00  8.0G  2.1G  6.0G  26% /
+devtmpfs                         488M     0  488M   0% /dev
+tmpfs                            496M     0  496M   0% /dev/shm
+tmpfs                            496M  6.9M  490M   2% /run
+tmpfs                            496M     0  496M   0% /sys/fs/cgroup
+/dev/sda2                       1014M   86M  929M   9% /boot
+/dev/mapper/VolGroup00-home      2.0G  3.2M  1.9G   1% /home
+/dev/mapper/VolGroup00-var       413M  162M  251M  40% /var
+tmpfs                            100M     0  100M   0% /run/user/1000
+tmpfs                            100M     0  100M   0% /run/user/0
+otus                             466G  382G   85G  82% /home/vagrant/otus
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# dd if-/dev/zero of=test.0 bs=100M count [K=4
+dd: unrecognized operand ‘if-/dev/zero’
+Try 'dd --help' for more information.
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# dd if-/dev/zero of=test.0 bs=100M count=4[1P[1@=
+4+0 records in
+4+0 records out
+419430400 bytes (419 MB) copied, 4.09185 s, 103 MB/s
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# ls
+dz-03.log  [0m[34;42motus[0m  test.0
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# ls -l
+total 410040
+-rw-r--r--. 1 root root     33147 May 21 07:55 dz-03.log
+drwxrwxrwx. 1 root root         0 May 16 05:17 [0m[34;42motus[0m
+-rw-r--r--. 1 root root 419430400 May 21 08:21 test.0
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# rm test.0 
+rm: remove regular file ‘test.0’? y
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# rm test.0 [5Pls -l[Kdd if=/dev/zero of=test.0 bs=100M count=4[C[K1
+1+0 records in
+1+0 records out
+104857600 bytes (105 MB) copied, 0.427352 s, 245 MB/s
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# dd if=/dev/zero of=test.0 bs=100M count=1[1P[1@1
+1+0 records in
+1+0 records out
+104857600 bytes (105 MB) copied, 0.709973 s, 148 MB/s
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# dd if=/dev/zero of=test.1 bs=100M count=1[1P[1@2
+1+0 records in
+1+0 records out
+104857600 bytes (105 MB) copied, 0.416047 s, 252 MB/s
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# ls
+dz-03.log  [0m[34;42motus[0m  test.0  test.1  test.2
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# -s -sl[Kh
+bash: -s: command not found
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# -s -sh[C[1P[1@l
+total 301M
+ 36K dz-03.log     0 [0m[34;42motus[0m  101M test.0  101M test.1  101M test.2
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# lvs
+  LV            VG         Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  LogVol00      VolGroup00 -wi-ao----   8.00g                                                    
+  LogVol01      VolGroup00 -wi-ao----   1.50g                                                    
+  home          VolGroup00 owi-aos---   2.00g                                                    
+  home-snapshot VolGroup00 swi-a-s---   2.00g      home   29.33                                  
+  var           VolGroup00 rwi-aor--- 416.00m                                    100.00          
+kroot@otuslinux:/home/vagrant\[root@otuslinux vagrant]# 
