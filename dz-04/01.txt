@@ -1,0 +1,34 @@
+Для того чтобы попасть в систему без пороля следует при загрузке системе в параметре ядра прописать следующие пораметры и выполнить следующие действия:
+1 rd.break
+	$mount -o remount,rw /sysroot/
+	$chroot /sysroot/
+	$passwd
+	$touch /.autorelabel
+	$exit
+	$reboot
+
+2 init=/bin/sh
+	$mount -o remount,rw /
+	$passwd
+	$touch /.autorelabel
+	$exit
+	$reboot
+
+3 systemd.unit=emergency.target При загрузке требуется ввести пароль root
+	$mount -o remount,rw /
+	$passwd
+	$reboot
+
+4 systemd.unit=rescue.target При загрузке требуется ввести пароль root
+	$passwd
+	$reboot
+
+5 Загрузиться с LiveCD
+	Подключить корневой каталог системы
+	Изменяем корневой каталог
+	Перезагружаем профиль
+	Меняем пароль
+	В корневом каталоге оставляем пустой файл .autorelabel
+	Выходи из окружении
+	Отмантируем примонтированные диски
+	Перезагружаемая	
