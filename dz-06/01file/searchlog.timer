@@ -1,0 +1,10 @@
+[Unit]
+Description=DZ_06
+
+[Timer]
+OnUnitActiveSec=30s
+
+Unit=searchlog.service
+
+[Install]
+WantedBy=timers.target

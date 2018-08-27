@@ -1,0 +1,2 @@
+FILE=/var/log/dmesg
+STR=systemd

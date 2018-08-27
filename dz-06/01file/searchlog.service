@@ -1,0 +1,7 @@
+[Unit]
+Description=DZ_06
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/sysconfig/searchlog
+ExecStart=/bin/grep $STR $FILE

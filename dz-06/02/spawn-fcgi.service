@@ -1,0 +1,15 @@
+[Unit]
+Description=Spawn FastCGI scripts to be used by web servers
+Afler=network.target local-fs.taregt remote-fs.target
+Documentation=man:spawn-fcgi(1)
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/sysconfig/spawn-fcgi
+ExecStart=/usr/bin/spawn-fcgi $OPTIONS >/dev/null
+ExecStop=/bin/kill -WINCH ${MAINID}
+KillSignal=SIGCONT
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
