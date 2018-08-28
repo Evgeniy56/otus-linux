@@ -5,3 +5,5 @@
 	<li><a href="https://github.com/Evgeniy56/otus-linux/tree/master/dz-03">Файловые системы и LVM </a></li>
 	<li><a href="https://github.com/Evgeniy56/otus-linux/tree/master/dz-04">Загрузка системы </a></li>
 </ul>
+	<li><a href="https://github.com/Evgeniy56/otus-linux/tree/master/dz-06">Инициализация системы. Systemd и SysV.</a></li>
+</ul>
