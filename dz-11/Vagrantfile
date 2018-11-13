@@ -1,0 +1,91 @@
+# -*- mode: ruby -*-
+# vim: set ft=ruby :
+# -*- mode: ruby -*-
+# vim: set ft=ruby :
+# -*- mode: rudy -*-
+# vim: set ft=ruby :
+
+MACHINES = {
+  :VPNServer => {
+        :box_name => "centos/7",
+        :net => [
+		   {ip: '192.168.0.1', adapter: 2, netmask: "255.255.255.252", virtualbox__intnet: "vpn"},
+                ],
+  },
+
+  :VPNClient => {
+        :box_name => "centos/7",
+        :net => [
+                   {ip: '192.168.0.2', adapter: 2, netmask: "255.255.255.252", virtualbox__intnet: "vpn"},
+                ]
+  },
+
+}
+
+Vagrant.configure("2") do |config|
+
+  MACHINES.each do |boxname, boxconfig|
+
+    config.vm.provider "virtualbox" do |confmash|
+	    confmash.memory = 256
+    end
+
+    config.vm.define boxname do |box|
+
+        box.vm.box = boxconfig[:box_name]
+        box.vm.host_name = boxname.to_s
+
+        boxconfig[:net].each do |ipconf|
+          box.vm.network "private_network", ipconf
+        end
+
+
+        if boxconfig.key?(:public)
+          box.vm.network "public_network", boxconfig[:public]
+        end
+
+	if boxname.to_s == "VPNServer"
+          box.vm.network "forwarded_port",guest: "1196", host: "1194"
+	end
+
+        box.vm.provision "shell", inline: <<-SHELL
+          mkdir -p ~root/.ssh
+               cp ~vagrant/.ssh/auth* ~root/.ssh
+        SHELL
+
+        case boxname.to_s
+        when "VPNServer"
+          box.vm.provision "shell", run: "always", inline: <<-SHELL
+		sudo su 
+		echo 0 > /sys/fs/selinux/enforce
+		yum -y install epel-release
+		yum -y install openvpn
+		sysctl net.ipv4.conf.all.forwarding=1
+		systemctl restart network.service
+		cp /vagrant/static.key /etc/openvpn/server/
+		cp /vagrant/servertap.conf /etc/openvpn/server/
+		cp /vagrant/servertun.conf /etc/openvpn/server/
+		cp /vagrant/servervpn.conf /etc/openvpn/server/
+                systemctl start openvpn-server@servertap.service
+		systemctl start openvpn-server@servertun.service
+		systemctl start openvpn-server@servervpn.service
+		exit
+            SHELL
+        when "VPNClient"
+          box.vm.provision "shell", run: "always", inline: <<-SHELL
+		sudo su
+		yum -y install epel-release
+		yum -y install openvpn
+                cp /vagrant/static.key /etc/openvpn/client/
+                cp /vagrant/clienttun.conf /etc/openvpn/client/
+                cp /vagrant/clienttap.conf /etc/openvpn/client/
+                systemctl start openvpn-client@clienttap.service
+                systemctl start openvpn-client@clienttun.service
+		exit
+            SHELL
+        end
+      end
+
+  end
+
+end

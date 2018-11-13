@@ -21,10 +21,15 @@ PrintSatatus(){
 
 PrintTTY(){
 	numdives=`awk '{ print $7}' /proc/$1/stat`
-	if [ $numdives -eq 0 ]; then		
+	if [ $numdives -eq 0 ]; then
 		echo "?"
 	else
-		echo $numdives
+		let "major = $numdives >> 8"
+		let "minor = $numdives ^ ($major << 8)"
+
+#		ttymajor=`ls -l /dev/ |  awk '{if ($5 == "$major," && $6 == "$minor") print $10}'`
+
+		echo $major","$minor","$ttymajor
 	fi
 }
 PrintTime(){
@@ -42,7 +47,7 @@ do
 		printSatatus=$(PrintSatatus $DirProcess)
 		printf "%5s %-8s %-6s %04s %s\n" $DirProcess "$printTTY" "$printSatatus" "0:00" "$printComm" | head -c `tput cols`
 #		printf "%b\n" "$printComm" | head -c `tput cols`
-	fi	
+	fi
 done
 
 #tr -s "^@" "\n"
