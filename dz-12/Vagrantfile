@@ -1,0 +1,143 @@
+# -*- mode: ruby -*-
+# vim: set ft=ruby :
+# -*- mode: ruby -*-
+# vim: set ft=ruby :
+# -*- mode: rudy -*-
+# vim: set ft=ruby :
+
+MACHINES = {
+  :PK1 => {
+        :box_name => "centos/7",
+        :net => [
+		   {ip: '192.168.0.1', adapter: 2, netmask: "255.255.255.248", virtualbox__intnet: "OSPF"},
+                ],
+  },
+
+  :PK2 => {
+        :box_name => "centos/7",
+        :net => [
+                   {ip: '192.168.0.2', adapter: 2, netmask: "255.255.255.248", virtualbox__intnet: "OSPF"},
+                ]
+  },
+  :PK3 => {
+        :box_name => "centos/7",
+        :net => [
+                   {ip: '192.168.0.3', adapter: 2, netmask: "255.255.255.248", virtualbox__intnet: "OSPF"},
+                ]
+  },
+
+}
+
+Vagrant.configure("2") do |config|
+
+  MACHINES.each do |boxname, boxconfig|
+
+    config.vm.provider "virtualbox" do |confmash|
+	    confmash.memory = 256
+    end
+
+    config.vm.define boxname do |box|
+
+        box.vm.box = boxconfig[:box_name]
+        box.vm.host_name = boxname.to_s
+
+        boxconfig[:net].each do |ipconf|
+          box.vm.network "private_network", ipconf
+        end
+
+
+        if boxconfig.key?(:public)
+          box.vm.network "public_network", boxconfig[:public]
+        end
+
+        box.vm.provision "shell", inline: <<-SHELL
+          mkdir -p ~root/.ssh
+               cp ~vagrant/.ssh/auth* ~root/.ssh
+        SHELL
+
+        case boxname.to_s
+        when "PK1"
+          box.vm.provision "shell", run: "always", inline: <<-SHELL
+		          sudo su
+              echo 0 > /sys/fs/selinux/enforce
+              sysctl -w net.ipv4.conf.all.rp_filter=2
+              echo "NOZEROCONF=yes" > /etc/sysconfig/network
+              systemctl restart network.service
+              ip link add link eth1 name vlan1 type vlan id 1
+              ip link set dev vlan1 up
+              ip addr add 10.10.10.1/30 dev vlan1
+
+              ip link add link eth1 name vlan3 type vlan id 3
+              ip link set dev vlan3 up
+              ip addr add 10.10.10.10/30 dev vlan3
+
+              yum -y install quagga
+
+              systemctl start zebra
+              systemctl start ospfd
+              systemctl start bgpd
+              systemctl start isisd
+
+              usermod -a -G quaggavt vagrant
+
+
+		          exit
+            SHELL
+        when "PK2"
+          box.vm.provision "shell", run: "always", inline: <<-SHELL
+		          sudo su
+              echo 0 > /sys/fs/selinux/enforce
+              sysctl -w net.ipv4.conf.all.rp_filter=2
+              echo "NOZEROCONF=yes" > /etc/sysconfig/network
+              systemctl restart network.service
+              ip link add link eth1 name vlan1 type vlan id 1
+              ip link set dev vlan1 up
+              ip addr add 10.10.10.2/30 dev vlan1
+
+              ip link add link eth1 name vlan2 type vlan id 2
+              ip link set dev vlan2 up
+              ip addr add 10.10.10.5/30 dev vlan2
+
+              yum -y install quagga
+
+              systemctl start zebra
+              systemctl start ospfd
+              systemctl start bgpd
+              systemctl start isisd
+
+              usermod -a -G quaggavt vagrant
+
+		          exit
+            SHELL
+        when "PK3"
+          box.vm.provision "shell", run: "always", inline: <<-SHELL
+              sudo su
+              echo 0 > /sys/fs/selinux/enforce
+              sysctl -w net.ipv4.conf.all.rp_filter=2
+              echo "NOZEROCONF=yes" > /etc/sysconfig/network
+              systemctl restart network.service
+              ip link add link eth1 name vlan2 type vlan id 2
+              ip link set dev vlan2 up
+              ip addr add 10.10.10.6/30 dev vlan2
+
+              ip link add link eth1 name vlan3 type vlan id 3
+              ip link set dev vlan3 up
+              ip addr add 10.10.10.9/30 dev vlan3
+
+              yum -y install quagga
+
+              systemctl start zebra
+              systemctl start ospfd
+              systemctl start bgpd
+              systemctl start isisd
+
+              usermod -a -G quaggavt vagrant
+
+              exit
+            SHELL
+        end
+      end
+
+  end
+
+end
