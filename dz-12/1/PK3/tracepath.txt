@@ -1,0 +1,21 @@
+[vagrant@PK3 ~]$ tracepath 10.10.10.2
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  10.10.10.2                                            1.115ms reached
+ 1:  10.10.10.10                                           0.799ms
+ 2:  10.10.10.2                                            0.746ms reached
+     Resume: pmtu 1500 hops 2 back 1
+[vagrant@PK3 ~]$ tracepath 10.10.10.1
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  10.10.10.5                                            1.072ms
+ 1:  10.10.10.1                                            1.219ms reached
+     Resume: pmtu 1500 hops 1 back 1
+[vagrant@PK3 ~]$ tracepath 10.10.10.10
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  10.10.10.10                                           1.018ms reached
+ 1:  10.10.10.10                                           0.731ms reached
+     Resume: pmtu 1500 hops 1 back 1
+[vagrant@PK3 ~]$ tracepath 10.10.10.5
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  10.10.10.5                                            1.169ms reached
+ 1:  10.10.10.5                                            0.672ms reached
+     Resume: pmtu 1500 hops 1 back 1
